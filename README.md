@@ -1,114 +1,52 @@
-# Project: Live MART- Online Delivery System 
+# Setting Up Live MART - Online Delivery System
 
-## 🚀 Features
+## Initial Requirements
 
-## 1. Multi-Role Architecture
+To get started with this project, ensure you have the following installed on your machine:
 
-Customer: Browse products, search/filter, add to cart, checkout, and track order history.
+- Python version 3.9 or higher
+- Pip (Python package manager)
 
-Retailer: Manage inventory (add/edit/delete products), view incoming orders, update order status, and view customer purchase history.
+## Installing Required Packages
 
-Wholesaler: Manage bulk supply and approve bulk orders from retailers.
+Navigate to the main project directory and install the required dependencies using:
 
-## 2. Core Functionalities
+    pip install -r requirements.txt
 
-Authentication: Secure Sign Up/Login with password hashing (SHA-256) and JWT Tokens.
+## Environment Configuration
 
-Email Verification: OTP-based email verification required before login.
+To enable core features such as email verification, environment variables must be configured.
 
-Smart Search: Real-time product filtering by Category, Price Range, and Name.
+Create a `.env` file inside the `backend/app/` directory and add the following values:
 
-Order Management: Complete flow from "Pending" to "Shipped" to "Delivered".
+    SECRET_KEY=your_unique_secret_key_here
+    MAIL_USERNAME=your_gmail_address@example.com
+    MAIL_PASSWORD=your_gmail_app_password
+    MAIL_FROM=your_gmail_address@example.com
+    MAIL_PORT=587
+    MAIL_SERVER=smtp.gmail.com
 
-Inventory Tracking: Stock levels automatically decrease upon purchase.
+For local testing, these values can alternatively be hardcoded directly in the `auth.py` file.
 
-B2B Market: Retailers can restock their inventory by ordering from Wholesalers.
+## Preparing the Database
 
-## 🛠️ Tech Stack
+The application requires initial data to function properly.
 
-Backend: Python, FastAPI (Async), SQLModel (SQLAlchemy + Pydantic)
+Navigate to the backend application directory and run the database population script:
 
-Database: SQLite (Auto-generated livemart.db)
+    cd backend/app
+    python populate_db.py
 
-Frontend: HTML5, CSS3 (Custom + Bootstrap), JavaScript (Fetch API)
+This script will:
+- Create the `livemart.db` database file
+- Create a sample retailer account with ID 1
+- Insert over 200 products
+- Download and store product images in `backend/data/product_images/`
 
-Authentication: JWT (JSON Web Tokens), OAuth2
+## Launching the Application
 
-Email: FastAPI-Mail (SMTP)
+Start the development server by running the following command from the `backend/app/` directory:
 
-## 📂 Project Structure
+    uvicorn main:app --reload
 
-```
-Live-MART/
-├── backend/                  <-- Python & API Logic
-│   ├── app/
-│   │   ├── main.py           <-- Entry Point (API Routes)
-│   │   ├── auth.py           <-- Auth Logic (JWT, Hashing, SMTP)
-│   │   ├── database.py       <-- DB Connection & CRUD Functions
-│   │   ├── db_models.py      <-- Database Tables (SQLModel)
-│   │   ├── schemas.py        <-- Request/Response Validation
-│   │   └── populate_*.py     <-- Data Seeders (Auto-fill DB)
-│   │
-│   ├── data/                 <-- Data Storage
-│   │   ├── livemart.db       <-- Database File
-│   │   └── product_images/   <-- Product Images (Downloaded by Seeder)
-│
-├── frontend/                 <-- User Interface
-│   ├── index.html            <-- Landing Page
-│   ├── dashboard.html        <-- Customer Shopping Page
-│   ├── retailer-dashboard.html
-│   ├── wholesaler-dashboard.html
-│   ├── cart.html
-│   ├── orders.html
-│   └── ... (Auth & Detail pages)
-│
-└── README.md
-```
-
-### ⚙️ Setup & Installation
-
-#### . Prerequisites
-
-Python 3.9+
-
-Pip
-
-#### 2. Install Dependencies
-
-Open a terminal in the root folder:
-
-```
-pip install requirements.txt
-```
-
-#### 3. Configure Environment (.env)
-
-Create a .env file in backend/app/ (or update the hardcoded values in auth.py for testing):
-
-```
-SECRET_KEY="your-secret-key"
-MAIL_USERNAME="your-email@gmail.com"
-MAIL_PASSWORD="your-app-password"
-MAIL_FROM="your-email@gmail.com"
-MAIL_PORT=587
-MAIL_SERVER="smtp.gmail.com"
-```
-
-#### 4. Seed the Database (Important!)
-
-Populate the database with 500+ real products and images.
-
-```
-cd backend/app
-python populate_db.py
-```
-
-This will create livemart.db, create Retailer ID 1, generate 200+ products, and download images to backend/data/product_images/.
-
-5. Run the Server
-
-```
-# From backend/app/ directory
-uvicorn main:app --reload
-```
-
+Once running, the application will be accessible through your web browser.
