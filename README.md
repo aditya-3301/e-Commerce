@@ -1,4 +1,8 @@
-# Setting Up Live MART - Online Delivery System
+# Setting Up e-Commerce - Online Delivery System
+e-Commerce is a plain html css and python backend driven online delivery system designed to simulate the functionality of a modern e-commerce platform. This project concentrates on products, authentication of users, verifying thru e-mail, and database operations.
+
+It is built using Python with FastAPI and uses a SQLite database for local development. The system includes a database population script that automatically seeds the application with a sample retailer account and hundreds of products with their  images that make testing features easy .
+
 
 ## Initial Requirements
 
