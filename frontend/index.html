@@ -1,0 +1,289 @@
+<!doctype html>
+<html class="no-js" lang="en"> 
+    <head>
+        <meta charset="utf-8">
+        <title>Live MART</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="favicon.ico">
+
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="assets/css/slick/slick.css"> 
+        <link rel="stylesheet" href="assets/css/slick/slick-theme.css">
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/iconfont.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/bootsnav.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+
+        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+        <style>
+            /* --- DARK MODE VISIBILITY FIXES --- */
+            body {
+                background-color: #0a0a0a; 
+                color: #e0e0e0; 
+            }
+
+            /* FORCE ALL HEADERS WHITE */
+            h1, h2, h3, h4, h5, h6, strong, b {
+                color: #ffffff !important;
+            }
+
+            /* Specific fix for the Home Banner Text */
+            .home_text h1, .home_text h2, .home_text strong {
+                color: #ffffff !important;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
+            }
+
+            /* Dark Navbar */
+            nav.navbar.bootsnav {
+                background-color: #000 !important;
+                border-bottom: 1px solid #222;
+            }
+            
+            /* Navbar Links */
+            nav.navbar.bootsnav ul.nav > li > a {
+                color: #fff !important;
+            }
+            
+            /* Logo Text */
+            .navbar-brand, .navbar-brand h3 {
+                color: #fff !important;
+                font-size: 3rem;
+                font-family: 'Bebas Neue';
+            }
+
+            /* Top Bar */
+            .bg-grey {
+                background-color: #111 !important; 
+                color: #ffffff !important;
+                border-bottom: 1px solid #222;
+            }
+            
+            .navbar-callus ul li a {
+                color: #ffffff !important;
+            }
+
+            /* Footer & Widgets */
+            .footer {
+                background-color: #050505 !important;
+                border-top: 1px solid #222;
+            }
+            .widget_item h5 {
+                color: #fff !important;
+            }
+            .widget_ab_item_text h6 {
+                color: #fff !important;
+            }
+            .widget_ab_item_text p {
+                color: #999 !important;
+            }
+            
+            /* Input Fields */
+            .form-control {
+                background-color: #222;
+                border: 1px solid #444;
+                color: #fff;
+            }
+
+            /* --- GLITCH BUTTONS WITH ANIMATION --- */
+            .button-49 {
+                width: 150px;
+                height: 76px;
+                line-height: 78px;
+                font-size: 20px;
+                font-family: 'Bebas Neue', sans-serif;
+                background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+                border: 0;
+                color: #fff;
+                letter-spacing: 3px;
+                box-shadow: 6px 0px 0px #00E6F6;
+                outline: transparent;
+                position: relative;
+                user-select: none;
+                touch-action: manipulation;
+                margin: 10px; 
+                cursor: pointer;
+                transition: transform 0.2s ease, box-shadow 0.2s ease; 
+            }
+
+            /* HOVER EFFECT: Float Up */
+            .button-49:hover {
+                transform: translateY(-5px); 
+                box-shadow: 6px 5px 0px #00E6F6; 
+            }
+
+            /* CLICK EFFECT: Go Inside */
+            .button-49:active {
+                transform: translateY(4px); 
+                box-shadow: 1px 0px 0px #00E6F6; 
+            }
+
+        </style>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar-collapse">
+
+        <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="object" id="object_one"></div>
+                    <div class="object" id="object_two"></div>
+                    <div class="object" id="object_three"></div>
+                    <div class="object" id="object_four"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="culmn">
+
+            <nav class="navbar navbar-default bootsnav navbar-fixed">
+                <div class="navbar-top bg-grey fix">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="navbar-callus text-left sm-text-center">
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="#brand">
+                        <b>Live-MART</b>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section id="home" class="home bg-black fix"
+             style="background: url('https://i.pinimg.com/736x/9f/b6/85/9fb685cf7be0f754b45f75caecc2d039.jpg') center/cover no-repeat !important;">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="col-md-12">
+                                <div class="home_banner text-center m-top-40">
+                                    <div class="home_text">
+                                        <h2 class="text-white">Welcome to <strong>Live-MART</strong></h2>
+                                        <h1 class="text-white">Buy & Sell for Customers, Retailers & Wholesalers</h1>
+                                    </div>
+
+                                    <div class="home_btns m-top-40">
+                                        <h3 class="text-white m-bottom-30" style="font-weight: 300;"><b>CHOOSE YOUR ROLE</b></h3>
+
+                                        <button class="button-49" role="button" onclick="window.location.href='Customer.html'" data-text="Customer">Customer</button>
+                                        <button class="button-49" role="button" onclick="window.location.href='Retailer.html'" data-text="Retailer">Retailer</button>
+                                        <button class="button-49" role="button" onclick="window.location.href='Wholesaler.html'" data-text="Wholesaler">Wholesaler</button>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer id="contact" class="footer action-lage bg-black p-top-80" style="margin-top: 60px; width: 100%; position: relative;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="footer-content" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                                
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="widget_item widget_about">
+                                        <h5 class="text-white" style="text-align: center;">About Us</h5>
+                                        <p class="m-top-20" style="text-align: center;">Connecting Retailers, Wholesalers, and Customers for a seamless shopping experience.</p>
+                                        
+                                        <div class="widget_ab_item m-top-30" style="display:flex; align-items: center; justify-content: center; margin-bottom: 15px; text-align: center;">
+                                            <div class="item_icon" style="margin-right: 15px;"><i class="fa fa-location-arrow"></i></div>
+                                            <div class="widget_ab_item_text">
+                                                <h6 class="text-white" style="margin:0;">Location</h6>
+                                                <p style="margin:0;">Shamirpet, Hyderabad</p>
+                                            </div>
+                                        </div>
+                                        <div class="widget_ab_item m-top-30" style="display:flex; align-items: center; justify-content: center; margin-bottom: 15px; text-align: center;">
+                                            <div class="item_icon" style="margin-right: 15px;"><i class="fa fa-phone"></i></div>
+                                            <div class="widget_ab_item_text">
+                                                <h6 class="text-white" style="margin:0;">Phone</h6>
+                                                <p style="margin:0;">+9676744544</p>
+                                            </div>
+                                        </div>
+                                        <div class="widget_ab_item m-top-30" style="display:flex; align-items: center; justify-content: center; margin-bottom: 15px; text-align: center;">
+                                            <div class="item_icon" style="margin-right: 15px;"><i class="fa fa-envelope-o"></i></div>
+                                            <div class="widget_ab_item_text">
+                                                <h6 class="text-white" style="margin:0;">Email</h6>
+                                                <p style="margin:0;">livemart.bphc@gmail.com</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="widget_item widget_newsletter sm-m-top-50">
+                                        <h5 class="text-white">Contact Us / Newsletter</h5>
+                                        <form class="form-inline m-top-30" id="footer-newsletter-form" style="margin-top: 20px;">
+                                            <div class="form-group" style="width: 100%; text-align: center;">
+                                                <input type="email" class="form-control" placeholder="Enter your Email" style="width: 100%; margin-bottom: 10px; padding: 10px;">
+                                                <button type="submit" class="btn text-center" style="width: 100%; padding: 10px;">Subscribe</button>
+                                            </div>
+                                        </form>
+                                        
+                                        <div class="widget_brand m-top-40" style="margin-top: 30px;">
+                                            <h5 class="text-white">Follow Us</h5>
+                                            <ul class="list-inline m-top-20" style="padding: 0; list-style: none; display: flex; justify-content: center; gap: 15px;">
+                                                <li><a href="https://www.facebook.com/live.mart/"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://x.com/"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/feed/"><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href="https://www.google.com/search?q=live+mart&num=10&sca_esv=aef7960d6ac611d8&sxsrf=AE3TifOqu-0v7K381gUTEhw2CJRMoSFaEw%3A1763917057625&source=hp&ei=AT0jafiXJOGQnesP8IfamQk&iflsig=AOw8s4IAAAAAaSNLEefrXfdh2QJI_mfBcyX-fkMImzP0&ved=0ahUKEwi4nIaN34iRAxVhSGcHHfCDNpMQ4dUDCBo&uact=5&oq=live+mart&gs_lp=Egdnd3Mtd2l6IglsaXZlIG1hcnQyCBAAGIAEGLEDMggQABiABBixAzIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESOkNULQEWIoNcAF4AJABAJgBsAGgAdwJqgEDMC44uAEDyAEA-AEBmAIJoAKPCqgCCsICBxAjGCcY6gLCAg0QIxjwBRgnGMkCGOoCwgIHEC4YJxjqAsICChAjGIAEGCcYigXCAgoQABiABBhDGIoFwgIKEC4YgAQYQxiKBcICCxAAGIAEGLEDGIMBwgIOEAAYgAQYsQMYgwEYigXCAg4QLhiABBixAxjRAxjHAcICEBAuGIAEGNEDGEMYxwEYigXCAg0QLhiABBixAxhDGIoFwgIQEC4YgAQYsQMYQxiDARiKBcICEBAAGIAEGLEDGEMYgwEYigXCAg0QABiABBixAxhDGIoFmAMK8QVF62lwKiwpvZIHAzEuOKAHmjuyBwMwLji4B4UKwgcFMi04LjHIByY&sclient=gws-wiz"><i class="fa fa-google-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 text-center" style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; padding-top: 20px;">
+                                    <p style="font-size: 12px;">© 2025 Live-MART. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        
+        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script>
+        <script src="assets/css/slick/slick.min.js"></script>
+        <script src="assets/js/bootsnav.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <script>
+            document.getElementById('footer-newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert("Thanks for connecting with us!");
+                this.reset();
+            });
+        </script>
+
+    </body>
+</html>

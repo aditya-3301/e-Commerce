@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Account | Live-MART</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,800' rel='stylesheet'>
+  <style>
+    body { background-color: #050505; color: #fff; font-family: 'Montserrat', sans-serif; height: 100vh; display: flex; justify-content: center; align-items: center; }
+    .login-container { background: #000; padding: 40px; border-radius: 10px; text-align: center; width: 400px; box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+    input { background: #222; border: none; color: #fff; padding: 10px; width: 100%; margin: 15px 0; text-align: center; letter-spacing: 5px; font-size: 20px; }
+    button { background: #00f3ff; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; margin-top: 20px; cursor: pointer; width: 100%; }
+    button:disabled { background: #555; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+      <h2>Verify Email</h2>
+      <p>Enter the code sent to <br><span id="email-display" style="color:#00f3ff">...</span></p>
+      <input type="text" id="otp-input" placeholder="XXXXXX" maxlength="6">
+      <p id="status-msg" style="font-size:12px; height:20px; margin-top:10px;"></p>
+      <button id="verify-btn" onclick="verifyAccount()">Verify & Login</button>
+  </div>
+
+  <script>
+    const statusMsg = document.getElementById('status-msg');
+    const emailDisplay = document.getElementById('email-display');
+    const otpInput = document.getElementById('otp-input');
+    
+    let userEmail = '';
+
+    // 1. Load Data
+    window.onload = function() {
+        userEmail = sessionStorage.getItem('pending_verification_email');
+        
+        // DEBUG: Check if email exists
+        if (!userEmail) {
+            alert("DEBUG: Session Storage is empty! \nDid you come from the Signup page?");
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        emailDisplay.textContent = userEmail;
+    };
+
+    // 2. Verify & Auto-Login Logic
+    async function verifyAccount() {
+        const otp = otpInput.value.trim();
+        const btn = document.getElementById('verify-btn');
+        const role = sessionStorage.getItem('pending_verification_role'); // Get Role
+
+        if (otp.length !== 6) {
+            statusMsg.style.color = "#ff4b2b";
+            statusMsg.textContent = "Please enter a valid 6-digit OTP.";
+            return;
+        }
+
+        btn.textContent = "Verifying...";
+        btn.disabled = true;
+
+        try {
+            // Note: We are sending 'role' to help the backend
+            const payload = { email: userEmail, otp: otp, role: role };
+            
+            const response = await fetch('/auth/verify-account', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            // --- DEBUG POPUP: SHOW SERVER RESPONSE ---
+            // alert("Server Response:\n" + JSON.stringify(result)); 
+            // -----------------------------------------
+
+            if (response.ok) {
+                if (result.access_token) {
+                    // SUCCESS CASE
+                    statusMsg.style.color = "#00f3ff";
+                    statusMsg.textContent = "Success! Logging in...";
+                    
+                    // 1. Save Token & Role
+                    localStorage.setItem('token', result.access_token);
+                    // Use the role returned by server, or fallback to session
+                    localStorage.setItem('user_role', result.role || role);
+                    
+                    // 2. Clean Session
+                    sessionStorage.removeItem('pending_verification_email');
+                    sessionStorage.removeItem('pending_verification_role');
+
+                    // 3. Redirect
+                    setTimeout(() => {
+                        const targetRole = result.role || role;
+                        if (targetRole === 'retailer') {
+                            window.location.href = 'retailer-dashboard.html';
+                        } else if (targetRole === 'wholesaler') {
+                            window.location.href = 'wholesaler-dashboard.html';
+                        } else {
+                            window.location.href = 'dashboard.html'; 
+                        }
+                    }, 1000);
+
+                } else {
+                    // FAILURE: Server said OK but sent no token
+                    alert("CRITICAL ERROR: Server verified you but did not send a Login Token.\n\nThis means your backend code in main.py is outdated.");
+                }
+
+            } else {
+                // FAILURE: Wrong OTP or Server Error
+                const err = result.detail || "Verification failed.";
+                statusMsg.style.color = "#ff4b2b";
+                statusMsg.textContent = err;
+                alert("Verification Failed:\n" + err);
+                btn.disabled = false;
+                btn.textContent = "Verify Account";
+            }
+        } catch (error) {
+            console.error(error);
+            alert("Network Error:\n" + error.message);
+            btn.disabled = false;
+            btn.textContent = "Verify Account";
+        }
+    }
+
+    async function resendOTP() {
+        try {
+            const res = await fetch(`/auth/resend-verification?email=${userEmail}`, { method: 'POST' });
+            if(res.ok) alert("OTP Sent!");
+            else alert("Failed.");
+        } catch(e) { alert("Error."); }
+    }
+</script>
+</body>
+</html>
